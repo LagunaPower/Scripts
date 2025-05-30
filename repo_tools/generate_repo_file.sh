@@ -90,7 +90,6 @@ EOF
 
     # Gestion des clés GPG et des flags gpgcheck/repo_gpgcheck
     if (( ${#gpgkeys[@]} > 0 )); then
-        echo "repo_gpgcheck=1" >> "$OUTPUT_FILE"
         echo "gpgcheck=1" >> "$OUTPUT_FILE"
         # Première clé sur la même ligne
         printf "gpgkey=%s\n" "${gpgkeys[0]}" >> "$OUTPUT_FILE"
@@ -99,7 +98,6 @@ EOF
             printf "       %s\n" "${gpgkeys[i]}" >> "$OUTPUT_FILE"
         done
     else
-        echo "repo_gpgcheck=0" >> "$OUTPUT_FILE"
         echo "gpgcheck=0" >> "$OUTPUT_FILE"
     fi
 done
